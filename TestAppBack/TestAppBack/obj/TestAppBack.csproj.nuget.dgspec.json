@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Юрий\\Desktop\\TestAppBack\\TestAppBack\\TestAppBack.csproj": {}
+    "C:\\Users\\Юрий\\Desktop\\EncriptAspVue\\TestAppBack\\TestAppBack\\TestAppBack.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Юрий\\Desktop\\TestAppBack\\TestAppBack\\TestAppBack.csproj": {
+    "C:\\Users\\Юрий\\Desktop\\EncriptAspVue\\TestAppBack\\TestAppBack\\TestAppBack.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Юрий\\Desktop\\TestAppBack\\TestAppBack\\TestAppBack.csproj",
+        "projectUniqueName": "C:\\Users\\Юрий\\Desktop\\EncriptAspVue\\TestAppBack\\TestAppBack\\TestAppBack.csproj",
         "projectName": "TestAppBack",
-        "projectPath": "C:\\Users\\Юрий\\Desktop\\TestAppBack\\TestAppBack\\TestAppBack.csproj",
+        "projectPath": "C:\\Users\\Юрий\\Desktop\\EncriptAspVue\\TestAppBack\\TestAppBack\\TestAppBack.csproj",
         "packagesPath": "C:\\Users\\Юрий\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Юрий\\Desktop\\TestAppBack\\TestAppBack\\obj\\",
+        "outputPath": "C:\\Users\\Юрий\\Desktop\\EncriptAspVue\\TestAppBack\\TestAppBack\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

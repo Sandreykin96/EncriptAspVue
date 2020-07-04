@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using TestAppBack.DbHelpers;
+using TestAppBack.Helpers;
 
 namespace TestAppBack.Controllers
 {
@@ -14,33 +16,40 @@ namespace TestAppBack.Controllers
     public class MessagesController : ControllerBase
     {
         private readonly ILogger<MessagesController> _logger;
-
         IWebHostEnvironment _appEnvironment;
         private ApplicationContext db;
+        private DbEncoder encoder { get; set; }
 
         public MessagesController(ILogger<MessagesController> logger, IWebHostEnvironment appEnvironment, ApplicationContext context)
         {
             _logger = logger;
             _appEnvironment = appEnvironment;
             db = context;
+
+            CaesarEncoderTableCreator creator = new CaesarEncoderTableCreator(context);//оставил временно тут, т.к. насколько понял по условиям -
+            creator.CreateKeysTable();                                                 //таблицу с ключами вручную создаем перед первым запуском 
+
+            encoder = new DbEncoder(db);
         }
 
         [HttpGet]
         public async Task<IEnumerable<Message>> Get()
         {
-            return db.Messages.ToList();
+            var messages = db.Messages.ToList();
+            messages.ForEach(message => message.Title = encoder.Encode(message.Title));
+            return messages;
         }
 
         [HttpPost]
         public async Task<Message> Post(object titleInfo)
         {
             Message recentMessage = new Message();
-            string Titile = titleInfo.ToString();
             recentMessage.Date = DateTime.Now;
             recentMessage.Completed = false;
-            recentMessage.Title = Titile;
+            recentMessage.Title = titleInfo.ToString();
             db.Messages.Add(recentMessage);
             await db.SaveChangesAsync();
+            recentMessage.Title = encoder.Encode(titleInfo.ToString());
             return recentMessage;
         }
     }
